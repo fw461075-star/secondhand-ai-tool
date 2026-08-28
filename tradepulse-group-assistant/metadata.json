@@ -1,0 +1,6 @@
+{
+  "name": "二手交易小助手",
+  "description": "校园二手交易群消息自动解析提取、分类筛查、实时推送与历史价格对比小助手",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

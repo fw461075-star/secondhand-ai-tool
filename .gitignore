@@ -1,0 +1,28 @@
+# ===== 隐私与数据（绝不提交） =====
+secondhand-ai-tool/push_notify/messages/
+secondhand-ai-tool/push_notify/models/
+secondhand-ai-tool/push_notify/.uploads/
+secondhand-ai-tool/trade_hub/dist/
+
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+
+# ===== Android / IDE =====
+*.iml
+local.properties
+.gradle/
+build/
+.cxx/
+.externalNativeBuild/
+
+# ===== 本地密钥/环境 =====
+.env
+.env.*
+secondhand-ai-tool/push_notify/.env
+
+# ===== 系统 =====
+.DS_Store
+Thumbs.db

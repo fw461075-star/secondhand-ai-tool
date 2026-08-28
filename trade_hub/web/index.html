@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#10b981">
+<title>淘物集市 · 二手交易信息聚合</title>
+<meta name="description" content="自动聚合二手交易群消息：智能分类、真实性过滤、关键词搜索、一键联系卖家">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand" id="brand" role="button" tabindex="0">
+      <svg class="brand-logo" viewBox="0 0 48 48" aria-hidden="true"><rect x="4" y="10" width="40" height="30" rx="7" fill="#10b981"/><path d="M15 10V9a9 9 0 0 1 18 0v1" stroke="#fff" stroke-width="3.4" fill="none" stroke-linecap="round"/><circle cx="18" cy="21" r="2.6" fill="#fff"/><circle cx="30" cy="21" r="2.6" fill="#fff"/><path d="M17 30c2.4 2.6 11.6 2.6 14 0" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+      <div class="brand-text">
+        <h1>淘物集市</h1>
+        <p id="brand-sub">二手交易信息聚合</p>
+      </div>
+    </div>
+    <div class="searchbox">
+      <svg viewBox="0 0 24 24" class="search-icon"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <input id="search-input" type="search" placeholder="搜索：电动车 / 教材 / 台灯 / 平板 …" autocomplete="off" enterkeyhint="search">
+      <button id="search-clear" class="search-clear" aria-label="清空" hidden>✕</button>
+    </div>
+    <nav class="tabs" role="tablist">
+      <button class="tab active" data-view="market" role="tab">🛍️ 集市</button>
+      <button class="tab" data-view="dashboard" role="tab">📊 报表</button>
+    </nav>
+  </div>
+</header>
+
+<main id="view-market" class="view">
+  <div class="filter-bar">
+    <div class="chip-row" id="type-chips">
+      <button class="chip active" data-type="all">全部</button>
+      <button class="chip" data-type="sell">🏷️ 出售</button>
+      <button class="chip" data-type="buy">🙋 求购</button>
+    </div>
+    <div class="chip-row scroll-x" id="cat-chips"></div>
+    <div class="filter-tail">
+      <label class="switch-label" title="展示被标记为存疑或广告的消息">
+        <input type="checkbox" id="show-doubtful"><span>显示存疑</span>
+      </label>
+      <select id="sort-select" aria-label="排序">
+        <option value="time">🕒 最新发布</option>
+        <option value="price_asc">💰 价格从低到高</option>
+        <option value="price_desc">💎 价格从高到低</option>
+        <option value="trust">✅ 可信度优先</option>
+      </select>
+    </div>
+  </div>
+  <div class="result-meta" id="result-meta"></div>
+  <div class="cards" id="cards"></div>
+  <div class="load-more-wrap"><button id="load-more" class="btn-ghost" hidden>加载更多</button></div>
+  <div class="empty" id="empty" hidden>
+    <div class="empty-icon">🔍</div>
+    <p>没有找到匹配的商品</p>
+    <p class="empty-sub">试试别的关键词，或点击上方分类浏览</p>
+  </div>
+</main>
+
+<main id="view-dashboard" class="view" hidden>
+  <div class="stat-grid" id="stat-grid"></div>
+  <div class="chart-grid">
+    <section class="panel span2"><h3>📈 消息量趋势</h3><div class="chart-box" id="chart-trend"></div></section>
+    <section class="panel"><h3>🏆 热门商品类别</h3><div class="chart-box" id="chart-cats"></div></section>
+    <section class="panel"><h3>⚖️ 供需结构</h3><div class="chart-box" id="chart-intent"></div></section>
+    <section class="panel"><h3>💰 各类别价格中位数</h3><div class="chart-box" id="chart-price"></div></section>
+    <section class="panel"><h3>🔥 热搜商品词</h3><div class="tag-cloud" id="hot-tags"></div></section>
+    <section class="panel span2"><h3>👥 群活跃度</h3><div class="chart-box" id="chart-groups"></div></section>
+  </div>
+  <p class="build-note" id="build-note"></p>
+</main>
+
+<!-- 详情弹层 -->
+<div class="modal" id="modal" hidden>
+  <div class="modal-mask" data-close></div>
+  <div class="modal-body" role="dialog" aria-modal="true">
+    <button class="modal-close" data-close aria-label="关闭">✕</button>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+<!-- 图片查看器 -->
+<div class="lightbox" id="lightbox" hidden><img id="lightbox-img" alt="商品图片"><button class="modal-close" aria-label="关闭">✕</button></div>
+
+<div class="toast" id="toast" hidden></div>
+
+<footer class="footer">
+  <p>数据来源：校园二手交易群自动采集 · 已过滤广告与重复信息 · 仅供学习交流</p>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>

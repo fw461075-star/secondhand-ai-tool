@@ -1,0 +1,28 @@
+{
+  "name": "二手交易助手",
+  "short_name": "二手助手",
+  "description": "校园二手群消息聚合搜索 - 实时监听、智能分类、关键词订阅提醒",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#E3F2FD",
+  "theme_color": "#1565C0",
+  "icons": [
+    {
+      "src": "messages/labeled/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "messages/labeled/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["shopping", "education"],
+  "lang": "zh-CN",
+  "dir": "ltr"
+}
